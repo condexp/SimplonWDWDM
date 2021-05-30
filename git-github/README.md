@@ -1,2 +1,0 @@
-# Simplon
-developpeur web mobile
