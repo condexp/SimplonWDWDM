@@ -1,4 +1,5 @@
 
+
 <?php
 
 echo '<hr>';
@@ -40,28 +41,13 @@ function calculRate(string $score): string
 //afficher les numero de telephones.
 // SI Checkboxes VAUT TRUE ON AFFICHE LE NUMERO SAISI 
 //Cochez-cette case si vous acceptez d'être rappelé.
+
 if(!(empty($_POST['recall']))){
-    foreach($_POST['recall'] as $values){
+   
         echo $_POST['phone'];
     } 
     
-   };
-
-?>
-
-<?php
-
-$fname = $_GET['firstname']; 
-$lname = $_GET['lastname'];
-if($_GET['fName']=='false'){
-    $fnameErr = "First name is required"; /*set value to show  notif*/
-    $fname ="";
-}
-if($_GET['lName']=='false'){
-    $lnameErr = "First name is required"; /*set value to show  notif*/
-    $lname    ="";
-}
-
+  
 
 ?>
 
@@ -69,6 +55,24 @@ if($_GET['lName']=='false'){
 
 <P> Merci pour votre notation :
 <?php 
+
+
+// Gestion des erreurs au niveau des champs input lastname
+// cette  function peut etre appliquer a tous les champs du formulaire 
+// tout en ajoutant des nouvelles paramettres entrant 
+function errofunction (string $lname):string {
+$lnameerror ="";
+if (isset($_POST["lastname"])) {
+   return  $lnameerror = "le nom est obligatoire";
+  }
+   else {
+   return $lname = ($_POST["lastname"]);
+  }
+
+};
+
+echo errofunction($_POST['lastname']);
+echo "<hr>";
 echo calculRate($_POST['question1']+$_POST['question2']+$_POST['question3']) ;
 ?> 
 <p>

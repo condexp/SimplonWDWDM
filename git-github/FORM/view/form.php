@@ -16,12 +16,6 @@
 </head>
 
 <body>
-<?php
-
-
-?>
-
-
     <div class="container">
 
         <h1> Amazin</h1>
@@ -31,15 +25,16 @@
                 <legend>Formulaire de satisfaction</legend>
                 <div class="form-group">
                     <label for="lastname" class="form-label mt-4">Nom : </label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" aria-describedby="lastnameHelp" placeholder="Enter votre nom" required="" value="">
-                    <span class="error">* </span>
+                    <input type="text" name="lastname" class="form-control" id="lastname" aria-describedby="lastnameHelp" placeholder="Enter votre nom"  >
+                    <span class="error">*  </span>
+                    
                 </div>
                 <div class="form-group">
                     <label for="firstname" class="form-label mt-4">Prénom : </label>
-                    <input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="firstnameHelp" placeholder="Enter votre prénom" required=""value="">
+                    <input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="firstnameHelp" placeholder="Enter votre prénom">
                     <span class="error">*</span>
-                </div>
-                <div class="form-group">
+                </div> 
+                <!-- <div class="form-group">
                     <label for="phone" class="form-label mt-4">Numéro de téléphone : </label>
                     <input type="tel" name="phone" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="0123456789" required="">
                 </div>
@@ -102,13 +97,13 @@
                 </div>
                 <legend class="mt-4">Checkboxes</legend>
                 <div class="form-check">
-                    <input name="recall[]" class="form-check-input" type="checkbox" value="true" id="recall">
+                    <input name="recall" class="form-check-input" type="checkbox"  id="recall">
                     
                     <label class="form-check-label" for="recall">
                         Cochez-cette case si vous acceptez d'être rappelé.
                     </label>
                     
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary mt-5">Submit</button>
             </fieldset>
         </form>
