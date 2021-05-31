@@ -6,8 +6,6 @@ $dbname="simplon_wp_1";
 $host="localhost";
 
 
-
-
 try {
 
     $dns= 'mysql:host='.$host.';dbname='.$dbname;
@@ -19,8 +17,6 @@ PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES utf8",
 PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
 
     );
-    
-    
     $dbh = new PDO($dns, $user, $pass,$options);
    //var_dump( $dbh);
    //echo "connexion etablie";
@@ -32,7 +28,7 @@ PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
 
 try {
        
-   $query= 'SELECT wp_users.ID, post_title, post_content, post_date, display_name 
+   $query= 'SELECT wp_posts.ID, post_title, post_content, post_date, display_name 
         from wp_posts,wp_users
         where post_type="post"
                 and post_status="publish"
@@ -70,9 +66,7 @@ $req ->closeCursor();
     <p> <?= $row["post_content"]?> ......</p>
     <p> <?= $row["display_name"]?> </p> 
 
-  <?php
-
-//var_dump($row);  'SELECT post_title, LEFT(post_content,100) as post_content_tr, post_date, display_name 
+  <?php 
 }
 ?>
 
