@@ -1,10 +1,16 @@
 <?php
+if (!isset ($_GET ["id"])){
+
+    //die("Parametre requit!");
+    var_dump("Parametre requit!");
+    header("Location: sql.php");
+    die("Parametre requit!");
+} 
 
 $user="root";
 $pass="";
 $dbname="simplon_wp_1";
 $host="localhost";
-
 
 try {
 
@@ -20,7 +26,7 @@ PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
     $dbh = new PDO($dns, $user, $pass,$options);
    //var_dump( $dbh);
    //echo "connexion etablie";
-   
+  
 } catch (PDOException $e) {
     print "Erreur connexion !: " . $e->getMessage() . "<br/>";
     die();
@@ -28,19 +34,17 @@ PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
 
 try {
        
-   $query= 'SELECT wp_posts.ID, post_title, post_content, post_date, display_name 
-        from wp_posts,wp_users
-        where post_type="post"
-                and post_status="publish"
-                and post_author=wp_users.ID
-                ORDER BY post_date DESC;
-   ';
+   $query= 'SELECT post_title, post_content, post_date, display_name 
+        from wp_posts
+        INNER JOIN wp_users ON post_author=wp_users.ID
+        where   post_type="post"
+        and  wp_posts.ID=' .$_GET["id"];
 
-
+//die($query);
 $req = $dbh->query($query);
 //$req->setFetchMode(PDO::FETCH_BOTH);http://localhost/PDO/sql.php
 $req->setFetchMode(PDO::FETCH_ASSOC);
-$tab = $req->fetchAll();
+$row= $req->fetch();
 $req ->closeCursor();
 
 //var_dump($tab );
@@ -59,33 +63,10 @@ $req ->closeCursor();
 
 <body>
 
-<form action="search.php" method="GET">
-
-<label for="search">Rechercher</label>
-<input type="text" name="s" id="search">
-
-<input type="submit" value="Rechercher">
-<hr>
-</form>
-
-
-<h1> Acceuil du blog </h1>
-
- <?php foreach($tab as $row) { ?>
-
-   <?php  var_dump ($row["ID"]); ?>
-
-    <h2><a href="article.php?id=<?= $row["ID"]?>"><?= $row["post_title"]?></a></h2>    
+    <h1><?= $row["post_title"]?></a></h1>    
     <p> Redigé par : XXXX - Date :<?= $row["post_date"]?> </p>
     <p> <?= $row["post_content"]?> ......</p>
     <p> <?= $row["display_name"]?> </p> 
-
-  <?php 
-}
-?>
-
- 
-
 </body>
 <html>
 
@@ -100,4 +81,3 @@ $req ->closeCursor();
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
 }
-?>

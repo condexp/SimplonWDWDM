@@ -1,0 +1,8 @@
+SELECT * FROM `wp_posts` WHERE `post_title`='Brouillon auto' ;
+SELECT post_title FROM `wp_posts`
+<h2>Titre du premier article</h2>
+ <p>Contenu du premier article</p>
+ <h2>Titre du deuxieme article</h2>
+ <p>Contenue du deuxieme article</p>
+ <H3>Titre du troisieme articles</H3>
+ <p> contenue du troisieme article </p>
