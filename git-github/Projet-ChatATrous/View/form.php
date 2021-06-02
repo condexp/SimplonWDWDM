@@ -1,4 +1,3 @@
-
 <form>
     <fieldset>
         <div class="row">
@@ -17,6 +16,3 @@
 
     </fieldset>
 </form>
-
-
-<!-- Créer ici un formulaire avec les champs pseudo et message -->

@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,6 +26,8 @@
         </tr>
     </thead>
     <tbody>
+
+    
     <!-- Dans une premier temps faites une boucle pour afficher "en dur" plusieurs messages (plusieurs fois le même) -->
      <?php 
       for($i=0 ; $i<5;$i++)
