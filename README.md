@@ -1,2 +1,2 @@
 # Simplon
-developpeur web mobile
+Formation Developpeur Web  & Mobile
