@@ -1,6 +1,6 @@
 <?php
+  //getDBConnection():PDO
 
-  //define connection function
   function getDBConnection():PDO{
   $user="root";
   $pass="";
@@ -27,32 +27,28 @@
  */
 function findAll(): array
 { 
-    $dbh = getDBConnection();
-    $sth = $dbh->query('SELECT date,pseudo,content FROM message');
-    $sth->setFetchMode(PDO::FETCH_ASSOC);
-    $tab = $sth->fetchAll();
-    $sth ->closeCursor();    
-    
-    return $tab;
+  $dbh = getDBConnection();
+  $sth = $dbh->query('SELECT date,pseudo,content FROM message');
+  $sth->setFetchMode(PDO::FETCH_ASSOC);
+  $tab = $sth->fetchAll();
+  $sth ->closeCursor();    
+
+  return $tab;
 
 }
-
 
 /**
  * Ajouter un message dans la base de données
  */
-function create(array $post): void
-{
-    $db = getDBConnection();
 
-    // Coder ici
+function create($pseudo,$content): void
+{  
+    $dbh = getDBConnection();
+    $stmt = $dbh->prepare("INSERT INTO MESSAGE (pseudo, content) VALUES (:pseudo, :content)");
+    $stmt->bindParam(':pseudo', $pseudo);
+    $stmt->bindParam(':content', $content);
+    
+$stmt->execute();
+      
 }
-
-/**
- * Connection à la base de donnéess
- * function getDBConnection(): PDO
-*{
-*    // Coder ici
-*}
- */
-
+ 

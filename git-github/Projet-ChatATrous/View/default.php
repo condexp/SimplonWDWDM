@@ -13,8 +13,10 @@
     <div class="container">
         <h1>Live chat Amazin</h1>
         <?php require'chat.php';
-              require'form.php' ?>
-<!-- Ce fichier est un template. On va insérer dedans le chat et le formulaire -->
+              require'form.php';
+        
+              
+              ?>
 
     </div>
 </body>

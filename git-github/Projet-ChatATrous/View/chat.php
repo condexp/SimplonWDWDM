@@ -1,7 +1,4 @@
-<?php 
-
-?>
-
+<?php ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,19 +23,18 @@
         </tr>
     </thead>
     <tbody>
-        
-    <!-- Dans une premier temps faites une boucle pour afficher "en dur" plusieurs messages (plusieurs fois le même) -->
-     <?php 
 
-foreach($tab_affi=findAll() as $row) {
+     <?php 
+//nl2br
+foreach($messages as $message) {
   ?>
         <tr class="table-light">
-        <td class="col-2"><?=($row["date"])?></td>
-        <td class="col-2"><?=($row["pseudo"])?></td>
-        <td class="col-8"><?=($row["content"])?></td>
-        </tr>
-     
-<?php }
+        <td class="col-2"><?= ($message["date"])?></td>
+        <td class="col-2"><?= htmlspecialchars ($message["pseudo"])?></td>
+        <td class="col-8"><?= htmlspecialchars($message["content"])?></td>
+        </tr>     
+<?php
+ }
      ?>       
     
     </tbody>
