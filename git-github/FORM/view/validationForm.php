@@ -1,5 +1,3 @@
-
-
 <?php
 
 echo '<hr>';
@@ -11,7 +9,6 @@ echo '<hr>';
 foreach ($_POST as $key => $value){
     echo "<p>" . $key . " : " . $value . "</p>";
 }
-
 
 echo '<hr>';
 
