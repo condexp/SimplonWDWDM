@@ -1,12 +1,20 @@
 <?php
-
 require 'model/model.php';
-$messages=findAll();
+require 'service/checkForm.php';
 
-if (isset($_POST['pseudo']) && isset($_POST['message'])) {
-              
-    create( $_POST['pseudo'],$_POST['message']);
+if ($_POST) {
+    $errors = checkForm($_POST);
+    if ($errors === []) {
+        create($_POST);
+    }
 }
 
-require 'view/default.php';
+// Attention ici il manque d'autres critères de validation car tout le monde pourrait supprimer n'importe quel message en modifiant le paramètre delete dans l'url.
+if(isset($_GET['delete'])) {
+    delete($_GET['delete']);
+    $_POST['pseudo'] = $_GET['pseudo'];
+}
 
+$messages = array_reverse(findAll());
+
+require 'view/default.php';
