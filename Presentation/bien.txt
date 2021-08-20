@@ -1,0 +1,15 @@
+titre
+description
+surface
+nbrepieces
+nbrechambres
+adresse
+ville
+codepostale
+vendu
+created_at
+updated_at
+energie
+prix
+imagefilei
+33MN
